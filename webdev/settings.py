@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'social_django',
+    'users.apps.UsersConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -122,9 +124,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.open_id.OpenIdAuth',
+    'social_core.backends.github.GithubOAuth2',
     'social_core.backends.vk.VKOAuth2',
     'social_core.backends.google.GoogleOpenId',
     'social_core.backends.google.GoogleOAuth2',
@@ -139,5 +143,8 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-SOCIAL_AUTH_VK_OAUTH2_KEY = "7018317"
-SOCIAL_AUTH_VK_OAUTH2_SECRET = "rCnSxGcCepYE4aT4jYYN"
+SOCIAL_AUTH_VK_OAUTH2_KEY = "7018565"
+SOCIAL_AUTH_VK_OAUTH2_SECRET = "qmKz2gfDUSY362PQ2Tdl"
+
+SOCIAL_AUTH_GITHUB_KEY = "4d59d138955dab2e9b24"
+SOCIAL_AUTH_GITHUB_SECRET = "d286252347b8d9efbb614ee795452f90b87a0f35"

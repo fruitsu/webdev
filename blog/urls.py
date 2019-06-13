@@ -1,5 +1,6 @@
 from django.urls import path, include
 from . import views
+from users import views as user_views
 
 
 urlpatterns = [
@@ -13,5 +14,5 @@ urlpatterns = [
     path('comment/<int:pk>/approve/', views.comment_approve, name='comment_approve'),
     path('comment/<int:pk>/remove/', views.comment_remove, name='comment_remove'),
     path('social/', include('social_django.urls', namespace="social")),
-    path('accounts/', include('django.contrib.auth.urls'), {'next_page': '/blog/forms/'})
+    path('accounts/', include('django.contrib.auth.urls'), {'next_page': '/blog/forms/'}),
 ]

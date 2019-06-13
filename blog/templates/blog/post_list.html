@@ -1,14 +1,15 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    <div class="form-group">
-      <textarea class="form-control" id="id_message" name="message" rows="5"></textarea>
-    </div>
-    <button type="submit" class="btn btn-success">Send</button>
-  </form>
 
+    <form method="post">
+    {% csrf_token %}
+        <div class="form-group">
+            <textarea class="form-control" id="id_message" name="message"   rows="5"></textarea>
+        </div>
+    <form>
+            <button type="submit" class="btn btn-success">Send</button>
+    </form>
     {% for post in posts %}
         <div class="post">
             <div class="date">
