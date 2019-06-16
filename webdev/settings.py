@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -66,7 +67,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',  # Добавил эту строку
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',  # Добавил эту строку
             ],
         },
     },
@@ -139,12 +141,14 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',  # бекенд классической аутентификации, чтобы работала авторизация через обычный логин и пароль
 )
 
+
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/list"
 LOGOUT_REDIRECT_URL = "/"
 
-SOCIAL_AUTH_VK_OAUTH2_KEY = "7018565"
-SOCIAL_AUTH_VK_OAUTH2_SECRET = "qmKz2gfDUSY362PQ2Tdl"
 
 SOCIAL_AUTH_GITHUB_KEY = "4d59d138955dab2e9b24"
 SOCIAL_AUTH_GITHUB_SECRET = "d286252347b8d9efbb614ee795452f90b87a0f35"
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "386126614029-kc6fvvu1a3cjdmh2npq3rhqi2o0j1rbt.apps.googleusercontent.com"
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "hYc7A4hCojYYOpr3VbzRtmeK"

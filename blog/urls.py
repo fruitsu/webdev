@@ -2,9 +2,9 @@ from django.urls import path, include
 from . import views
 from users import views as user_views
 
-
 urlpatterns = [
-    path('', views.post_list, name='post_list'),
+    path('', views.login, name='login'),
+    path('list', views.post_list, name='post_list'),
     path('post/<int:pk>/', views.post_detail, name='post_detail'),
     path('post/new/', views.post_new, name='post_new'),
     path('post/<int:pk>/edit/', views.post_edit, name='post_edit'),
@@ -15,4 +15,5 @@ urlpatterns = [
     path('comment/<int:pk>/remove/', views.comment_remove, name='comment_remove'),
     path('social/', include('social_django.urls', namespace="social")),
     path('accounts/', include('django.contrib.auth.urls'), {'next_page': '/blog/forms/'}),
+    path('comments', include('django_comments.urls')),
 ]
