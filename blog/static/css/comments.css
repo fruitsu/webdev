@@ -1,0 +1,166 @@
+.comments{
+ 	width:80%;
+ 	margin:0;
+ 	display:flex;
+ 	flex-direction: row;
+    justify-content:flex-start;
+    word-wrap: break-word;
+}
+
+.comments .panel,.comments .content{
+	padding:5px 0;
+	margin:0;
+}
+.not_first{
+	border-top: 1px solid rgb(183,183,183);
+}
+.comments .panel{
+	padding-left: 10px;
+	width:15%;
+	background-color: rgb(249,249,251);
+	border-right: 1px solid rgb(183,183,183);
+	display:flex;
+ 	flex-direction: row;
+    justify-content:space-between;
+}
+.comments .panel .right{
+	display:flex;
+ 	flex-direction: column;
+    align-items:flex-end;
+    padding-right:5px;
+}
+.comments .panel .right span{
+	display: block;
+}
+.comments .panel .right a{
+	text-decoration: none; 
+
+}
+.comments .panel .left{
+	color:rgb(183,183,183);
+}
+.comments .text{
+	background-color:white;
+	padding:5px;
+	width:85%;
+	word-wrap: break-word;
+}
+.comments .text1{
+	background-color:rgb(255,255,255);
+}
+.comments .text2{
+	background-color:rgb(255,250,255);
+}
+.comments .text3{
+	background-color:rgb(245,255,255);
+}
+
+
+
+.add_comm{
+    display:flex;
+    margin:0;
+    padding:0;
+    margin: 15px  0 ;
+    align-items:flex-start;
+    flex-direction: column;
+}
+
+.add_comm > textarea{
+    height: 5.0em;
+    width:100%;
+    color: white;
+    background-color: rgba(69,69,69,0);
+    transition: all .5s ease;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: white;
+  font-weight:bold;
+  overflow: hidden;
+  text-indent: 0px;
+  white-space:nowrap;
+  opacity: 1;
+
+  transition: all 2s ease;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: white;
+  font-weight:bold;
+  overflow: hidden;
+  text-indent: 0px;
+  white-space:nowrap;
+  transition: text-indent 0.5s ease;
+}
+::-ms-input-placeholder { /* IE 10+ */
+  color: white;
+  font-weight:bold;
+  overflow: hidden;
+  text-indent: 0px;
+  white-space:nowrap; 
+  transition: text-indent 0.5s ease;
+}
+::-moz-placeholder { /* Firefox 18- */
+  color: white;
+  font-weight:bold;
+  overflow: hidden;
+  text-indent: 0px;
+  white-space:nowrap;
+  transition: text-indent 0.5s ease;
+}
+textarea:focus::-webkit-input-placeholder{
+	cursor:pointer;
+	text-indent: 500px;
+	opacity: 0;
+} 
+
+.add_comm_btn{
+    float:right;
+    margin-left:10px;
+    z-index:5;
+
+}
+.add_comm button {
+  display: inline-block;
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+  user-select: none;
+  padding: .5em 2em;
+  outline: none;
+  border: 2px solid;
+  border-radius: 1px;
+  transition: 0.2s;
+  background-color: rgba(69,69,69,.6);
+  margin-left: 15px;
+
+}
+.add_comm button:hover{
+	 background: rgba(255,255,255,.2);
+}
+
+.add_comm button:active {
+	 background: rgba(255,255,255,.2);
+}
+.add_comm .btn{
+	padding:3px;
+
+	background-color: rgba(69,69,69,0);
+
+}
+.add_comm{
+	width:80%;
+	background-color: rgba(69,69,69,.5);
+	transition: all .5s ease;
+}
+.add_comm:hover{
+	background-color: rgba(69,69,69,1);
+}
+.add_comm_focus{
+	background-color: rgba(69,69,69,1);
+}
+
+.responce_comm{
+	color: blue;
+	cursor:pointer;
+}

@@ -1,20 +1,49 @@
-{% extends 'blog/base.html' %}
+{% extends 'blog/content_post.html' %}
+{% load static %}
+{% load extras %}
 
 {% block content %}
-
-    <form action="{% url 'post_new' %}" method="post">
+<form action="{% url 'post_new' %}" method="post">
     {% csrf_token %}
         <button type="submit" class="btn btn-submit">Send</button>
     </form>
-    </div>
-    {% for post in posts %}
-        <div class="post">
-            <div class="date">
-                {{ post.published_date }}
-            </div>
-            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <p>{{ post.text|linebreaksbr }}</p>
-            <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
+
+    <div class="content container">
+        <div class="row">
+                {% for post in posts %}
+                    {% if forloop.first %}
+                        <h2>{{description}}</h2>
+                    {% endif %}
+
+                             {% include 'blog/post.html' %}
+
+
+                    {% if forloop.last %}
+                        <h3>Отличная работа, все прочитано</h3>
+                        <span>Лучше бы настоящую работу себе нашел...</span>
+                    {% endif %}
+
+
+                    {% ifequal forloop.revcounter 2 %}
+                        <span>Готовся, последнее сообщение </span>
+                    {% endifequal %}
+
+                {% empty %}
+                    <h2>Кажись постов пока не завезли</h2>
+                {% endfor %}
+
         </div>
-    {% endfor %}
+    </div>
+
+
+
+    <form id="add_comm_form" method="post" action="{% url 'add_comm' %}" style="">{% csrf_token %}
+            <div class="add_comm">
+                <input type="hidden" name="post-id" value="">
+                <input type="hidden" name="comment-id" value="">
+                <textarea name="text" required="" placeholder="Оставьте комментарий"></textarea>
+                <button type="submit">Комментировать</button>
+            </div>
+        </form>
+
 {% endblock content %}

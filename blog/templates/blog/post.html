@@ -1,0 +1,37 @@
+{% load static %}
+{% load extras %}
+
+	<div class="post " data-post-id = {{post.pk}}  >
+	 	{% if request.user.is_authenticated %}
+            <span class="add_comm_btn" data-index="0">Комментировать</span>
+    	{% endif %}
+
+
+
+	     <h1><a href="">{{post.title}}</a></h1>
+
+			{% autoescape off %}
+	    		<p>{{ post.text|linebreaksbr }}</p>
+			{% endautoescape %}
+	   <div class="footer_post">
+	    			<div class = "footer ">
+	                	<span></span>
+	                </div>
+
+	    			<div class = "footer right_footer ">
+	    				<span class = "{% ifequal post.author request.user%}
+	    					post_author
+	    				{% endifequal %}
+	    				">{{post.author}}</span>
+	                	<span>{{post.created_date}}</span>
+	                </div>
+	    </div>
+
+	    {%if post.comment_set.all.count%}
+                    <div class='show_comm' data-index='1'> Показать комментарии </div>
+                    {%endif%}
+
+	    	{%with comm=post.comment_set.all template_name='blog/comments.html' %}
+            		{% include template_name %}
+       		{%endwith%}
+	</div>

@@ -1,0 +1,27 @@
+{% load staticfiles %}
+{%for c in comm%}
+
+     <div class='comment' data-comm-id='{{c.id}}' >
+        <span class='header'>{{c.author}}  <span> {{c.date|date:"G:i  j.n.Y"}}</span></span>
+
+            {% if user.is_authenticated%}
+                <span class="add_comm_btn" data-index="0">Комментировать</span>
+            {%endif%}
+            {%ifequal c.author user%}
+                <span class='edit' class='head'>Редактировать</span>
+            {%endifequal%}
+        <hr/>
+
+        <div class='content'>{{c.text}}</div>
+        {% if c.comment_set.all%}
+
+            <div class='plus' ><img data-index='0' class='plus_img' src='{% static "img/plus.jpg" %}'>
+            </div>
+        {% endif%}
+       {%with comm=c.comment_set.all template_name='blog/comments.html' %}
+            {% include template_name %}
+       {%endwith%}
+
+    </div>
+{% endfor%}
+

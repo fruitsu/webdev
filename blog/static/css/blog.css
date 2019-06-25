@@ -7,7 +7,11 @@ body{
   background-color: #ff9400;
   margin-top: 0;
   padding: 20px 20px 20px 40px;
-
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  align-items: center;
+ 
 }
 
 .page-header h1,
@@ -18,15 +22,23 @@ body{
   font-size: 36pt;
   text-decoration: none;
 }
+.page-header h2,
+.page-header h2 a,
+.page-header h2 a:visited,
+.page-header h2 a:active {
+  color: #ffffff;
+  font-size: 25pt;
+  text-decoration: none;
+}
 
 .content {
-
+  
   margin : 0;
   margin-left:40px;
   width:auto;
+  
 
-
-
+  
 }
 
 h1,
@@ -48,7 +60,9 @@ h4 {
 .top-menu:hover,
 .top-menu:visited {
   color: #ffffff;
-  float: right;
+  position:absolute;
+  top:1%;
+  right:0;
   font-size: 26pt;
   margin-right: 20px;
 }

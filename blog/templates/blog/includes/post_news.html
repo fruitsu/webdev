@@ -1,0 +1,76 @@
+{% extends 'blog/content_post.html' %}
+{% load static %}
+{% load extras %}
+
+{% block style_files %}
+
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/comments.css' %}">
+
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="content">
+
+
+        {% include 'blog/post.html' %}
+
+        {% for c in post.comments %}
+            <div class = "comments
+                    {% if not forloop.first %} not_first {% endif %}
+                    " >
+
+                <div class =  'panel'>
+                    <div class= 'left'>
+                        id<br>
+                        author
+
+                    </div>
+                    <a name ="{{c.pk}}"></a>
+                    <div class= 'right'>
+                        <span>#{{c.pk}}</span>
+                        <span>{{c.author.username|max_len:10}}</span>
+                        <span class = "responce_comm" data-com-id = "{{c.pk}}"
+                        >Ответить</span>
+                    </div>
+
+                </div>
+                <div class='text {% cycle "text1" "text2" "text3" %}'>
+
+                    {% ifnotequal c.answer_comment None %}
+                        <a href="#{{c.answer_comment.pk}}">
+                            [{{c.answer_comment.pk}}]
+                            {{c.answer_comment.author.username|max_len:10}},
+                            во-первых ты не прав, во-вторых
+                        </a>
+                        {% else %}
+                    {% endifnotequal%}
+
+                    {{c.text_massage}}
+
+
+                </div>
+            </div>
+        {% empty %}
+            <h3>Никто не хочет это комментировать</h3>
+        {% endfor %}
+
+
+        <form  id='add_comm_form' method='post' action ='{% url "add_comm"%}'>{% csrf_token %}
+                <div class='add_comm'>
+                    <input type='hidden' name='post-id' value='{{post.pk}}'>
+                    <input type='hidden' name='comm-id' value=''>
+                    <textarea name='text_comm' required placeholder='Оставьте комментарий'></textarea>
+                    <div class='btn'> <button type='submit'>Комментировать</button> </div>
+                </div>
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block title %}
+   {{post.title}}
+{% endblock %}
